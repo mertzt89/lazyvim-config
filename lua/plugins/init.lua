@@ -1,5 +1,5 @@
 return {
   { import = "lazyvim.plugins.extras.ui.edgy" },
-  { import = "plugins.lspconfig" },
+  { import = "plugins.lsp" },
   { import = "plugins.ui" },
 }
