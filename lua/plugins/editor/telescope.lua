@@ -2,8 +2,8 @@ return {
   -- Telescope UI Customization
   {
     "telescope.nvim",
-    opts = function(_, opts)
-      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+    opts = {
+      defaults = {
         prompt_prefix = "   ",
         selection_caret = "  ",
         entry_prefix = "  ",
@@ -28,9 +28,21 @@ return {
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         mappings = {
+          i = {
+            ["<C-j>"] = {
+              require("telescope.actions").move_selection_next,
+              type = "action",
+              opts = { nowait = true, silent = true },
+            },
+            ["<C-k>"] = {
+              require("telescope.actions").move_selection_previous,
+              type = "action",
+              opts = { nowait = true, silent = true },
+            },
+          },
           n = { ["q"] = require("telescope.actions").close },
         },
-      })
-    end,
+      },
+    },
   },
 }
