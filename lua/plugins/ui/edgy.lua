@@ -10,7 +10,14 @@ return {
       end
     end
 
-    opts.right = vim.list_extend(opts.right or {}, { outline })
+    opts.right = vim.list_extend(
+      opts.right or {},
+      { outline, {
+        ft = "OverseerList",
+        pinned = true,
+        open = "OverseerOpen",
+      } }
+    )
 
     return opts
   end,
