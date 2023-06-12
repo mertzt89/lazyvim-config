@@ -5,7 +5,7 @@ This configuration is originally templated from [LazyVim Starter](https://github
 
 ## Philosophy
 
-I've written many (Neo)vim configurations over many years and I find myself (like others) reaching for a common set of plugin provided functions. A common problem within the plugin ecosystem is that it evolves very rapidly with every major release of Neovim that adds notable features. When this occurs, it becomes a generally painful and daunting task to discover the wealth of new plugins that leverage the new features. More frustrating can be when you existing plugin configuration no longer works when upgrading Neovim or plugin versions.
+I've written many (Neo)vim configurations over many years and I find myself (like others) reaching for a common set of plugin provided functions. A common problem within the plugin ecosystem is that it evolves very rapidly with every major release of Neovim that adds notable features. When this occurs, it becomes a generally painful and daunting task to discover the wealth of new plugins that leverage the new features. More frustrating can be when your existing plugin configuration no longer works when upgrading Neovim or plugin versions.
 
 The goal of this configuration architecture is to offload the bulk of the "day-to-day make Vim an IDE" style plugin curation and configuration to a community managed "base" configuration, then simply override the provided configs and add plugins as necessary. By using this architecture I have been able to achieve what I consider to be my best configuration yet; however, the amount of time spent discovering plugins and dealing with common plugin integration was much more minimal.
 
