@@ -5,6 +5,8 @@ return {
       bindings = {
         ["<C-l>"] = false,
         ["<C-h>"] = false,
+        ["<C-k>"] = false,
+        ["<C-j>"] = false,
         ["q"] = "<cmd>OverseerClose<CR>",
       },
     },
