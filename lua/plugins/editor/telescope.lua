@@ -1,7 +1,27 @@
+local Util = require("lazyvim.util")
+local find_command = { "rg", "--files", "--color", "never", "--no-ignore-vcs" }
+
 return {
   -- Telescope UI Customization
   {
     "telescope.nvim",
+    keys = {
+      {
+        "<leader><space>",
+        Util.telescope("find_files", { find_command = find_command }),
+        desc = "Find Files (git root)",
+      },
+      {
+        "<leader>ff",
+        Util.telescope("find_files", { find_command = find_command }),
+        desc = "Find Files (git root)",
+      },
+      {
+        "<leader>fF",
+        Util.telescope("find_files", { cwd = false, find_command = find_command }),
+        desc = "Find Files (pwd)",
+      },
+    },
     opts = {
       defaults = {
         prompt_prefix = "   ",
