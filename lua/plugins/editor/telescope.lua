@@ -1,5 +1,5 @@
 local Util = require("lazyvim.util")
-local find_command = { "rg", "--files", "--color", "never", "--no-ignore-vcs" }
+local find_files_command = { "rg", "--color", "never", "--no-ignore-vcs", "--files" }
 
 return {
   -- Telescope UI Customization
@@ -8,18 +8,23 @@ return {
     keys = {
       {
         "<leader><space>",
-        Util.telescope("find_files", { find_command = find_command }),
-        desc = "Find Files (git root)",
+        Util.telescope("find_files", { find_command = find_files_command }),
+        desc = "Find Files (root dir)",
+      },
+      {
+        "<leader>/",
+        Util.telescope("live_grep", { additional_args = { "--no-ignore-vcs" } }),
+        desc = "Grep (root dir)",
       },
       {
         "<leader>ff",
-        Util.telescope("find_files", { find_command = find_command }),
-        desc = "Find Files (git root)",
+        Util.telescope("find_files", { find_command = find_files_command }),
+        desc = "Find Files (root dir)",
       },
       {
         "<leader>fF",
-        Util.telescope("find_files", { cwd = false, find_command = find_command }),
-        desc = "Find Files (pwd)",
+        Util.telescope("find_files", { cwd = false, find_command = find_files_command }),
+        desc = "Find Files (rel. Git root)",
       },
     },
     opts = {
