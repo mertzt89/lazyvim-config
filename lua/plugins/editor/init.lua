@@ -6,4 +6,5 @@ return {
     config = true,
     lazy = false,
   },
+  { import = "lazyvim.plugins.extras.editor.flash" },
 }
