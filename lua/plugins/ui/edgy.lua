@@ -10,14 +10,20 @@ return {
       end
     end
 
-    opts.right = vim.list_extend(
-      opts.right or {},
-      { outline, {
-        ft = "OverseerList",
-        pinned = true,
-        open = "OverseerOpen",
-      } }
+    opts.right = vim.list_extend(opts.right or {}, { outline, })
+
+    opts.bottom = vim.list_extend(
+      opts.bottom or {},
+      {
+        {
+          ft = "OverseerList",
+          pinned = true,
+          open = "OverseerOpen",
+        },
+      }
     )
+
+    opts.animate = vim.tbl_deep_extend("force", opts.animate or {}, { enabled = false, fps = 200, cps = 360 })
 
     return opts
   end,
