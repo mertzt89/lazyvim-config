@@ -4,6 +4,7 @@ return {
   { import = "lazyvim.plugins.extras.editor.mini-files" },
   { import = "lazyvim.plugins.extras.coding.yanky" },
   { import = "plugins.editor" },
+  { import = "plugins.lazyvim_extras" },
   { import = "plugins.lsp" },
   { import = "plugins.ui" },
 }
