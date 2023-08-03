@@ -10,6 +10,9 @@ return {
         desc = "Step Over",
       },
     },
+    config = function()
+      require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "c", "cpp" } })
+    end
   },
   require("util.mason").add_ensure_installed("cpptools"),
 }
