@@ -1,31 +1,26 @@
 local Util = require("lazyvim.util")
 local find_files_command = { "rg", "--color", "never", "--no-ignore-vcs", "--files" }
 
+local defaults = {
+  find_files_command = { "rg", "--color", "never", "--no-ignore-vcs", "--files" },
+  live_grep_additional_args = { "--no-ignore-vcs" }
+}
+
+-- Neoconf integration
+require("neoconf.plugins").register({
+  name = "telescope",
+  on_schema = function(schema)
+    -- this call will create a json schema based on the lua types of your default settings
+    schema:import("telescope", defaults)
+  end,
+})
+
 return {
   -- Telescope UI Customization
   {
     "telescope.nvim",
-    keys = {
-      {
-        "<leader><space>",
-        Util.telescope("find_files", { find_command = find_files_command }),
-        desc = "Find Files (root dir)",
-      },
-      {
-        "<leader>/",
-        Util.telescope("live_grep", { additional_args = { "--no-ignore-vcs" } }),
-        desc = "Grep (root dir)",
-      },
-      {
-        "<leader>ff",
-        Util.telescope("find_files", { find_command = find_files_command }),
-        desc = "Find Files (root dir)",
-      },
-      {
-        "<leader>fF",
-        Util.telescope("find_files", { cwd = false, find_command = find_files_command }),
-        desc = "Find Files (rel. Git root)",
-      },
+    dependencies = {
+      { "nvim-lspconfig" }, -- HACK: the spec for nvim-lspconfig manually performs the neoconf setup()
     },
     opts = {
       defaults = {
@@ -69,5 +64,25 @@ return {
         },
       },
     },
+    config = function()
+      -- Get settings from neoconf / fallback to defaults
+      local conf = require('neoconf').get("telescope", defaults)
+
+      vim.keymap.set('n', "<leader><space>",
+        function() Util.telescope("find_files", { find_command = conf.find_files_command })() end,
+        { desc = "Find Files (root dir)" })
+
+      vim.keymap.set('n', "<leader>/",
+        function() Util.telescope("live_grep", { additional_args = conf.live_grep_additional_args })() end,
+        { desc = "Grep (root dir)" })
+
+      vim.keymap.set('n', "<leader>ff",
+        function() Util.telescope("find_files", { find_command = conf.find_files_command })() end,
+        { desc = "Find Files (root dir)" })
+
+      vim.keymap.set('n', "<leader>fF",
+        function() Util.telescope("find_files", { cwd = false, find_command = conf.find_files_command })() end,
+        { desc = "Find Files (re. Git root)" })
+    end
   },
 }
