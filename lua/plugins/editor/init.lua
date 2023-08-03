@@ -6,12 +6,4 @@ return {
     config = true,
     lazy = false,
   },
-  {
-    "rafamadriz/friendly-snippets",
-    config = function()
-      require("luasnip.loaders.from_vscode").load {
-        exclude = { "c" },
-      }
-    end
-  }
 }
