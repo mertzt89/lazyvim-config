@@ -5,6 +5,7 @@
   "alpha-nvim": { "branch": "main", "commit": "e4fc5e29b731bdf55d204c5c6a11dc3be70f3b65" },
   "bufferline.nvim": { "branch": "main", "commit": "99f0932365b34e22549ff58e1bea388465d15e99" },
   "catppuccin": { "branch": "main", "commit": "057c34f849cf21059487d849e2f3b3efcd4ee0eb" },
+  "clangd_extensions.nvim": { "branch": "main", "commit": "723639da63ad87753c4a9271077a39b5b2f080a4" },
   "cmake-tools.nvim": { "branch": "master", "commit": "20082f85909864a3c93acbc51c20dddc1004f39d" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
