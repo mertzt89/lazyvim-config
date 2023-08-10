@@ -8,4 +8,11 @@ return {
       }
     }
   },
+  {
+    "telescope.nvim",
+    dependencies = "folke/noice.nvim",
+    config = function()
+      require("telescope").load_extension("noice")
+    end
+  }
 }
