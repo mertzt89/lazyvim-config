@@ -64,7 +64,7 @@ return {
         },
       },
     },
-    config = function()
+    config = function(_, opts)
       -- Get settings from neoconf / fallback to defaults
       local conf = require('neoconf').get("telescope", defaults)
 
@@ -83,6 +83,8 @@ return {
       vim.keymap.set('n', "<leader>fF",
         function() Util.telescope("find_files", { cwd = false, find_command = conf.find_files_command })() end,
         { desc = "Find Files (re. Git root)" })
+
+      require("telescope").setup(opts)
     end
   },
 }

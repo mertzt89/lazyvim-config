@@ -6,13 +6,10 @@ return {
       presets = {
         command_palette = false,
       }
-    }
-  },
-  {
-    "telescope.nvim",
-    dependencies = "folke/noice.nvim",
-    config = function()
+    },
+    config = function(_, opts)
       require("telescope").load_extension("noice")
+      require("noice").setup(opts)
     end
   }
 }
