@@ -1,5 +1,5 @@
 return {
-  "LazyVim/LazyVim",
+  "mertzt89/LazyVim",
   opts = {
     colorscheme = "tokyonight-night",
     icons = {
