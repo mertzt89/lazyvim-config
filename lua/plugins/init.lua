@@ -3,5 +3,6 @@ return {
 
   { import = "plugins.editor" },
   { import = "plugins.lsp" },
+  { import = "plugins.productivity" },
   { import = "plugins.ui" },
 }
