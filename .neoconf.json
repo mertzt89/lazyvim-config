@@ -17,10 +17,17 @@
       "rg",
       "--color",
       "never",
-      "--no-ignore-vcs",
-      "--files"
+      "--files",
+      "--no-ignore-vcs"
     ],
-    "live_grep_additional_args": [
+    "grep_command": [
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
       "--no-ignore-vcs"
     ]
   }
