@@ -1,5 +1,4 @@
 local Util = require("lazyvim.util")
-local find_files_command = { "rg", "--color", "never", "--no-ignore-vcs", "--files" }
 
 local defaults = {
   find_files_command = {
@@ -9,14 +8,7 @@ local defaults = {
     "--no-ignore-vcs",
     "--files"
   },
-  grep_command = {
-    "rg",
-    "--color=never",
-    "--no-heading",
-    "--with-filename",
-    "--line-number",
-    "--column",
-    "--smart-case",
+  live_grep_additional_args = {
     "--no-ignore-vcs"
   }
 }
@@ -35,19 +27,7 @@ return {
   {
     "telescope.nvim",
     dependencies = {
-      { "nvim-lspconfig" }, -- HACK: the spec for nvim-lspconfig manually performs the neoconf setup()
-    },
-    keys = {
-      {
-        "<leader>ff",
-        Util.telescope("find_files", { find_command = find_files_command }),
-        desc = "Find Files (root dir)",
-      },
-      {
-        "<leader>fF",
-        Util.telescope("find_files", { cwd = false, find_command = find_files_command }),
-        desc = "Find Files (rel. Git root)",
-      },
+      { "neoconf.nvim" },
     },
     opts = {
       defaults = {
@@ -95,13 +75,26 @@ return {
       -- Get settings from neoconf / fallback to defaults
       local conf = require('neoconf').get("telescope", defaults)
 
-      -- Set find commands based on defaults.
-      opts.defaults.vimgrep_arguments = conf.grep_command
-      opts.pickers = {
-        find_files = {
-          find_command = conf.find_files_command,
-        },
-      }
+      vim.keymap.set('n',
+        "<leader><space>",
+        Util.telescope("find_files", { find_command = conf.find_files_command }),
+        { desc = "Find files" })
+
+      vim.keymap.set('n',
+        "<leader>ff",
+        Util.telescope("find_files", { find_command = conf.find_files_command }),
+        { desc = "Find Files (root dir)" })
+
+      vim.keymap.set('n',
+        "<leader>fF",
+        Util.telescope("find_files", { cwd = false, find_command = conf.find_files_command }),
+        { desc = "Find Files (rel. Git root)" })
+
+      vim.keymap.set('n',
+        "<leader>/",
+        Util.telescope("live_grep", { cwd = false, additional_args = conf.live_grep_additional_args }),
+        { desc = "Live Grep" })
+
 
       require("telescope").setup(opts)
     end
