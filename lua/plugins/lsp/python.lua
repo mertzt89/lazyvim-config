@@ -11,14 +11,11 @@ return {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    opts = function()
+    opts = function(_, opts)
       local nls = require("null-ls")
-      return {
-        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-        sources = {
-          nls.builtins.formatting.black,
-        },
-      }
+      vim.list_extend(opts.sources, {
+        nls.builtins.formatting.black
+      })
     end,
   },
   require("util.mason").add_ensure_installed("python-lsp-server"),
