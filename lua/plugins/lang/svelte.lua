@@ -11,14 +11,20 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
+    opts = function(_, opts)
+      local ensure = {
         "svelte",
         "html",
         "javascript",
         "json",
         "tsx",
-      },
-    },
+      }
+
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, ensure)
+      else
+        opts.ensure_installed = ensure
+      end
+    end,
   },
 }
